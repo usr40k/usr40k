@@ -4,11 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>usr40k</title>
+  <meta name="description" content="usr40k builds quirky tools, terminal UIs, web experiments, and creative side projects." />
+  <title>usr40k // cybercraft</title>
   <link rel="icon" type="image/webp" href="media/images/WiZE.webp" />
-  <link rel="stylesheet" href="media/css/hack.css">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="media/css/hack.css" />
   <link rel="stylesheet" href="media/css/aos.css" />
+  <link rel="stylesheet" href="style.css" />
 
   <script>!function(e){let t=0,r=()=>{let s=document.createElement("script");s.src=e[t++],s.onerror=()=>e[t]&&r(),document.head.append(s)};r()}(location.hostname.includes("usr40k.dev")?["https://header.usr40k.dev/injector.js","https://40476.github.io/header/injector.js"]:["https://40476.github.io/header/injector.js","https://header.usr40k.dev/injector.js"]);</script>
 
@@ -21,111 +22,211 @@
 </head>
 
 <body>
-
-  <div id="splash">
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ201h0">
+  <div id="splash" aria-label="loading splash screen">
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ201h0" aria-label="secret link">
       <img src="media/images/WiZE.webp" alt="W i Z E splash logo" />
     </a>
   </div>
 
   <div id="main-content" style="display: none;">
-    <main class="terminal">
+    <div class="page-shell">
+      <div class="aurora aurora-one"></div>
+      <div class="aurora aurora-two"></div>
+      <div class="grid-floor"></div>
 
-      <section id="about" class="block" data-aos="fade-up">
-        <div class="hero-wrapper">
-          <iframe class="bg-iframe" src="matrix.html?text=none" frameborder="0"></iframe>
-          <header class="hero" data-aos="fade-down">
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="brand-mark">usr40k@sys:~</span>
+          <span class="blink">_</span>
+        </div>
+        <nav class="topnav" aria-label="Main navigation">
+          <a href="#about">about</a>
+          <a href="#projects">projects</a>
+          <a href="#skills">skills</a>
+          <a href="#links">contact</a>
+        </nav>
+      </header>
+
+      <main class="terminal">
+        <section id="about" class="panel hero-panel" data-aos="fade-up">
+          <div class="hero-copy">
+            <p class="eyebrow">// system profile // creative utility</p>
             <h1>usr40k@sys:~> whoami</h1>
-          </header>
-        </div>
+            <p class="lead">
+              Salutations, I’m <strong>usr40k</strong> — a tinkerer, script-wrangler, and web experimenter.
+              I build tiny tools, strange interfaces, and playful software that feels like a terminal had a dream.
+            </p>
+            <div class="cta-row">
+              <a class="button primary" href="#projects">View Projects</a>
+              <a class="button secondary" href="#links">Get in Touch</a>
+            </div>
+            <div class="mini-status">
+              <span><i class="dot live"></i> online</span>
+              <span>streaming energy: 74%</span>
+              <span>internet: questionable</span>
+            </div>
+          </div>
 
-        <div class="flex-box spaced">
-          <div>
-            <br>
-            <div style="background:#005555;" class="stat_base stat_anim">BRUH</div>
-            <center><br>Bruh</center>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="visual-panel">
+              <div class="orb orb-main"></div>
+              <div class="orb orb-secondary"></div>
+              <div class="signal-ring ring-one"></div>
+              <div class="signal-ring ring-two"></div>
+              <div class="matrix-box">
+                <span>status</span>
+                <strong>creative mode</strong>
+              </div>
+            </div>
           </div>
-          <div>
-            <br>
-            <div style="background:#005555;" class="stat_base statlong_anim">I WISH</div>
-            <center><br>VTuber</center>
-          </div>
-          <div>
-            <br>
-            <div style="background:#005555;" class="stat_base stat_anim">100%</div>
-            <center><br>Zoomer</center>
-          </div>
-          <div>
-            <br>
-            <div style="background:#005555;" class="stat_base stat_anim">100%</div>
-            <center><br>Maniac</center>
-          </div>
-        </div>
+        </section>
 
-        <h2>usr40k@sys:~> cat README (67).md</h2>
-        <p id="summary">
-          Salutations (yea its cringe not sorry), you can call me <b>usr40k</b>, or
-          if you meet me in sky: <b>numbers</b>. I make small (ish) programs to accomplish
-          tasks, I hope to get a career in streaming someday (man I wish I had better internet).
-        </p>
-        <h2>usr40k@sys:~> cat Documents/things_I_do.txt</h2>
-        <p>
-          zsh scripting, terminal UIs (python+curses),
-          nonsense programs such as <a href="http://gizmos.usr40k.dev/doofusdot/" target="_blank">Doofus Dot Ultra</a>,
-          web games, github actions, small tools, and also an upcoming matrix bot.
-        </p>
-      </section>
-      
-      <section id="links_and_contact" class="block" data-aos="fade-up">
-        <h2>usr40k@sys:~> cat links_and_contact.txt</h2><br>
-        <ul>
-          <li>PIXIV : <a href="https://www.pixiv.net/en/users/109219544">usr40k</a></li>
-          <li>Matrix : <a href="https://matrix.to/#/@usr40k:usr40k.dev" target="_blank">@usr40k:usr40k.dev</a></li>
-          <li>Github : <a href="https://github.com/40476">usr40k</a></li>
-        </ul>
-      </section>
-    </main>
+        <section class="panel stat-panel" data-aos="fade-up">
+          <div class="stat-card">
+            <div class="stat-badge stat-one">BRUH</div>
+            <span>Bruh</span>
+          </div>
+          <div class="stat-card">
+            <div class="stat-badge stat-two">I WISH</div>
+            <span>VTuber</span>
+          </div>
+          <div class="stat-card">
+            <div class="stat-badge stat-three">100%</div>
+            <span>Zoomer</span>
+          </div>
+          <div class="stat-card">
+            <div class="stat-badge stat-four">100%</div>
+            <span>Maniac</span>
+          </div>
+        </section>
+
+        <section id="projects" class="panel" data-aos="fade-up">
+          <div class="section-heading">
+            <p class="eyebrow">// active projects</p>
+            <h2>usr40k@sys:~> cat Projects/*/README.md</h2>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-card accent-blue">
+              <div class="project-topline">
+                <span class="chip">web</span>
+                <span class="chip subtle">2026</span>
+              </div>
+              <h3>Doofus Dot Ultra</h3>
+              <p>Chaotic browser toy and visual experiment with pure absurdity, speed, and noise.</p>
+              <a href="http://gizmos.usr40k.dev/doofusdot/" target="_blank" rel="noreferrer">launch demo →</a>
+            </article>
+
+            <article class="project-card accent-purple">
+              <div class="project-topline">
+                <span class="chip">game</span>
+                <span class="chip subtle">JS</span>
+              </div>
+              <h3>megaminer NG</h3>
+              <p>Homemade mega-miner-inspired browser game with upgrades, multiplayer energy, and the kind of chaos that keeps a build alive.</p>
+              <a href="https://github.com/40476/web-gizmos/tree/main/megaminer" target="_blank" rel="noreferrer">source code →</a>
+            </article>
+
+            <article class="project-card accent-pink">
+              <div class="project-topline">
+                <span class="chip">linux</span>
+                <span class="chip subtle">hardware</span>
+              </div>
+              <h3>g510s</h3>
+              <p>Custom support and mods for the Logitech G510s keyboard, tuned for function and comfort.</p>
+              <a href="https://github.com/40476/g510s" target="_blank" rel="noreferrer">read more →</a>
+            </article>
+
+            <article class="project-card accent-green">
+              <div class="project-topline">
+                <span class="chip">cli</span>
+                <span class="chip subtle">streaming</span>
+              </div>
+              <h3>streamonline</h3>
+              <p>Terminal-native livestream checker for Linux, built for quick signal reads and system monitoring.</p>
+              <a href="https://github.com/40476/streamonline" target="_blank" rel="noreferrer">repo →</a>
+            </article>
+          </div>
+        </section>
+
+        <section id="skills" class="panel" data-aos="fade-up">
+          <div class="section-heading">
+            <p class="eyebrow">// technical focus</p>
+            <h2>usr40k@sys:~> cat Documents/things_I_do.txt</h2>
+          </div>
+
+          <div class="skill-layout">
+            <div class="focus-list">
+              <div class="focus-row"><span>01</span><p>zsh scripting</p></div>
+              <div class="focus-row"><span>02</span><p>terminal UIs with Python + curses</p></div>
+              <div class="focus-row"><span>03</span><p>web games and browser experiments</p></div>
+              <div class="focus-row"><span>04</span><p>GitHub Actions automation</p></div>
+              <div class="focus-row"><span>05</span><p>Matrix bot ideas and side-channel tooling</p></div>
+            </div>
+
+            <div class="tag-cloud" aria-label="skill tags">
+              <span>bash</span>
+              <span>python</span>
+              <span>javascript</span>
+              <span>html/css</span>
+              <span>canvas</span>
+              <span>webgl</span>
+              <span>ui design</span>
+              <span>automation</span>
+              <span>linux</span>
+              <span>creative coding</span>
+              <span>systems</span>
+              <span>fast prototyping</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="links" class="panel contact-panel" data-aos="fade-up">
+          <div class="section-heading">
+            <p class="eyebrow">// links & contact</p>
+            <h2>usr40k@sys:~> cat links_and_contact.txt</h2>
+          </div>
+
+          <ul class="link-list">
+            <li><span>PIXIV</span><a href="https://www.pixiv.net/en/users/109219544" target="_blank" rel="noreferrer">usr40k</a></li>
+            <li><span>Matrix</span><a href="https://matrix.to/#/@usr40k:usr40k.dev" target="_blank" rel="noreferrer">@usr40k:usr40k.dev</a></li>
+            <li><span>GitHub</span><a href="https://github.com/40476" target="_blank" rel="noreferrer">40476</a></li>
+          </ul>
+        </section>
+      </main>
+    </div>
 
     <script src="media/js/aos.js"></script>
     <script>
-      AOS.init();
+      AOS.init({
+        duration: 700,
+        easing: 'ease-out-cubic',
+        once: true
+      });
     </script>
   </div>
 
   <script>
-    window.onload = function() {
-      const validPages = ["about", "memes", "projects", "stats", "links_and_contact"];
-      const params = new URLSearchParams(window.location.search);
-      const pageParam = params.get("page");
-      const sectionToShow = validPages.includes(pageParam) ? pageParam : validPages[0];
+    window.onload = function () {
+      const splash = document.getElementById('splash');
+      const mainContent = document.getElementById('main-content');
 
-      // Handle Splash Animation
-      const splash = document.getElementById("splash");
       if (splash) {
-        splash.style.animation = "fadeOut 2s ease 2s forwards";
+        splash.style.animation = 'fadeOut 1.6s ease 1.4s forwards';
       }
 
-      // Show Main Content
-      document.getElementById("main-content").style.display = "block";
-      document.querySelectorAll('.block').forEach(section => {
-        section.style.display = section.id === sectionToShow ? 'block' : 'none';
-      });
+      if (mainContent) {
+        mainContent.style.display = 'block';
+      }
 
-      // Claim IPv4 Game
-      fetch("https://ipv4.games/claim?name=usr40k");
+      try {
+        fetch('https://ipv4.games/claim?name=usr40k');
+      } catch (error) {
+        console.warn('ipv4 claim skipped', error);
+      }
     };
-
-    // Metadata Logic
-    const summaryElement = document.getElementById("summary");
-    if (summaryElement) {
-      const summaryText = summaryElement.innerText;
-      let descTag = document.querySelector("meta[name='description']") || document.createElement("meta");
-      descTag.name = "description";
-      descTag.content = summaryText;
-      if (!descTag.parentNode) document.head.appendChild(descTag);
-    }
-</script>
-
+  </script>
 </body>
 
 </html>
+
