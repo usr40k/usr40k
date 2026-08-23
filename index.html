@@ -35,10 +35,12 @@
       <div class="grid-floor"></div>
 
       <header class="topbar">
-        <div class="brand-block">
-          <span class="brand-mark">usr40k@sys:~</span>
-          <span class="blink">_</span>
-        </div>
+        <button class="brand-shell-toggle" id="brandShellToggle" type="button" aria-expanded="false" aria-controls="terminalShellPanel">
+          <div class="brand-block">
+            <span class="brand-mark">usr40k@sys:~</span>
+            <span class="blink">_</span>
+          </div>
+        </button>
         <nav class="topnav" aria-label="Main navigation">
           <a href="#about">about</a>
           <a href="#projects">projects</a>
@@ -46,6 +48,27 @@
           <a href="#links">contact</a>
         </nav>
       </header>
+
+      <aside class="terminal-shell-panel" id="terminalShellPanel" aria-live="polite" hidden>
+        <div class="terminal-shell-header">
+          <span>dumsh // wasm web-shell</span>
+          <span>status: ready</span>
+        </div>
+        <div class="terminal-output" id="terminalOutput">
+          <div><span class="prompt">usr40k@dumsh:~$</span> banner</div>
+          <div>  ____  _   _ __  __ ____  _   _ </div>
+          <div> |  _ \| | | |  \/  / ___|| | | |</div>
+          <div> | | | | | | | |\/| \___ \| |_| |</div>
+          <div> | |_| | |_| | |  | |___) |  _  |</div>
+          <div> |____/ \___/|_|  |_|____/|_| |_|</div>
+          <div>  a dumb little shell in WebAssembly</div>
+          <div>wasm runtime: loading…</div>
+        </div>
+        <label class="terminal-input-row" for="shellInput">
+          <span class="prompt">usr40k@dumsh:~$</span>
+          <input id="shellInput" type="text" value="" aria-label="Terminal command input" placeholder="try: ls, cat README.md, neofetch, help" />
+        </label>
+      </aside>
 
       <main class="terminal">
         <section id="about" class="panel hero-panel" data-aos="fade-up">
@@ -62,20 +85,20 @@
             </div>
             <div class="mini-status">
               <span><i class="dot live"></i> online</span>
-              <span>streaming energy: 74%</span>
-              <span>internet: questionable</span>
+              <span id="liveClock">time loading…</span>
+              <span id="streamState">livestreams coming soon!</span>
             </div>
           </div>
 
           <div class="hero-visual" aria-hidden="true">
             <div class="visual-panel">
-              <div class="orb orb-main"></div>
+              <div class="orb orb-main" id="profileOrb"></div>
               <div class="orb orb-secondary"></div>
               <div class="signal-ring ring-one"></div>
               <div class="signal-ring ring-two"></div>
               <div class="matrix-box">
-                <span>status</span>
-                <strong>creative mode</strong>
+                <span>github</span>
+                <strong id="githubDisplayName">loading…</strong>
               </div>
             </div>
           </div>
@@ -197,12 +220,120 @@
     </div>
 
     <script src="media/js/aos.js"></script>
+    <script src="wasm-shell/shell-runtime.js"></script>
     <script>
       AOS.init({
         duration: 700,
         easing: 'ease-out-cubic',
         once: true
       });
+
+      const liveClock = document.getElementById('liveClock');
+      const updateClock = () => {
+        const now = new Date();
+        const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+        const date = now.toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' });
+        liveClock.textContent = `${date} • ${time}`;
+      };
+      updateClock();
+      setInterval(updateClock, 1000);
+
+      const githubDisplayName = document.getElementById('githubDisplayName');
+      const profileOrb = document.getElementById('profileOrb');
+
+      fetch('https://api.github.com/users/40476')
+        .then((response) => response.ok ? response.json() : null)
+        .then((user) => {
+          if (!user) return;
+          if (githubDisplayName) {
+            githubDisplayName.textContent = user.name || user.login || '40476';
+          }
+          if (profileOrb && user.avatar_url) {
+            profileOrb.style.backgroundImage = `url(${user.avatar_url})`;
+            profileOrb.style.backgroundSize = 'cover';
+            profileOrb.style.backgroundPosition = 'center';
+            profileOrb.style.backgroundRepeat = 'no-repeat';
+          }
+        })
+        .catch(() => {
+          if (githubDisplayName) githubDisplayName.textContent = '40476';
+          if (profileOrb) {
+            profileOrb.style.backgroundImage = 'url("https://avatars.githubusercontent.com/u/40476?v=4")';
+          }
+        });
+
+      const brandShellToggle = document.getElementById('brandShellToggle');
+      const terminalShellPanel = document.getElementById('terminalShellPanel');
+      const shellInput = document.getElementById('shellInput');
+      const terminalOutput = document.getElementById('terminalOutput');
+
+      if (brandShellToggle && terminalShellPanel) {
+        brandShellToggle.addEventListener('click', () => {
+          const isHidden = terminalShellPanel.hasAttribute('hidden');
+          terminalShellPanel.toggleAttribute('hidden', !isHidden);
+          brandShellToggle.setAttribute('aria-expanded', String(isHidden));
+        });
+      }
+
+      const appendShellLine = (text) => {
+        const line = document.createElement('div');
+        line.textContent = text;
+        terminalOutput.appendChild(line);
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+      };
+
+      const handleShellInput = (event) => {
+        if (event.key !== 'Enter') return;
+        const value = shellInput.value.trim();
+        if (!value) return;
+
+        const prompt = document.createElement('div');
+        prompt.innerHTML = '<span class="prompt">usr40k@dumsh:~$</span> ' + value;
+        terminalOutput.appendChild(prompt);
+
+        if (value === 'clear') {
+          terminalOutput.innerHTML = '';
+          shellInput.value = '';
+          return;
+        }
+
+        if (!window.wasmShell || !window.wasmShell.isReady()) {
+          appendShellLine('shell: WASM runtime not ready yet. Try again in a moment.');
+          shellInput.value = '';
+          return;
+        }
+
+        try {
+          const output = window.wasmShell.exec(value);
+          if (output) {
+            appendShellLine(output);
+          }
+        } catch (error) {
+          appendShellLine('shell error: ' + error.message);
+        }
+        shellInput.value = '';
+      };
+
+      if (shellInput) {
+        shellInput.addEventListener('keydown', handleShellInput);
+      }
+
+      // Initialize the WASM shell
+      if (window.wasmShell) {
+        window.wasmShell.init()
+          .then(() => {
+            const statusLine = document.createElement('div');
+            statusLine.textContent = 'wasm runtime: ready — try: ls, cat README.md, neofetch, banner, help';
+            terminalOutput.appendChild(statusLine);
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+          })
+          .catch((error) => {
+            const statusLine = document.createElement('div');
+            statusLine.textContent = 'wasm runtime: failed to load (' + error.message + ')';
+            terminalOutput.appendChild(statusLine);
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+          });
+      }
     </script>
   </div>
 
