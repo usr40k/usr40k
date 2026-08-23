@@ -65,7 +65,7 @@
       <main class="terminal">
         <section id="about" class="panel hero-panel" data-aos="fade-up">
           <div class="hero-copy">
-            <p class="eyebrow">// system profile // creative utility</p>
+            <!-- <p class="eyebrow">// system profile // creative utility</p> -->
             <h1>usr40k@sys:~> whoami</h1>
             <p class="lead">
               Haiiiii :3, I’m <strong>usr40k</strong> — a tinkerer, script-wrangler, and web experimenter. And I'm also really into femboy aesthetics. (slowly becoming one too :3)
@@ -76,16 +76,15 @@
               <a class="button secondary" href="#links">Get in Touch</a>
             </div>
             <div class="mini-status">
-              <span><i class="dot live"></i> online</span>
-              <span id="liveClock">time loading…</span>
+              <!-- <span><i class="dot live"></i> online</span> -->
               <span id="streamState">livestreams coming soon!</span>
+              <span id="liveClock">time loading…</span>
             </div>
           </div>
 
           <div class="hero-visual" aria-hidden="true">
             <div class="visual-panel">
               <div class="orb orb-main" id="profileOrb"></div>
-              <div class="orb orb-secondary"></div>
               <div class="signal-ring ring-one"></div>
               <div class="signal-ring ring-two"></div>
               <div class="matrix-box">
@@ -180,10 +179,7 @@
 
       const liveClock = document.getElementById('liveClock');
       const updateClock = () => {
-        const now = new Date();
-        const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
-        const date = now.toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' });
-        liveClock.textContent = `${date} • ${time}`;
+        liveClock.textContent = new Date();
       };
       updateClock();
       setInterval(updateClock, 1000);
