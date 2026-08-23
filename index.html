@@ -55,18 +55,10 @@
           <span>status: ready</span>
         </div>
         <div class="terminal-output" id="terminalOutput">
-          <div><span class="prompt">usr40k@dumsh:~$</span> banner</div>
-          <div>  ____  _   _ __  __ ____  _   _ </div>
-          <div> |  _ \| | | |  \/  / ___|| | | |</div>
-          <div> | | | | | | | |\/| \___ \| |_| |</div>
-          <div> | |_| | |_| | |  | |___) |  _  |</div>
-          <div> |____/ \___/|_|  |_|____/|_| |_|</div>
-          <div>  a dumb little shell in WebAssembly</div>
-          <div>wasm runtime: loading…</div>
         </div>
         <label class="terminal-input-row" for="shellInput">
-          <span class="prompt">usr40k@dumsh:~$</span>
-          <input id="shellInput" type="text" value="" aria-label="Terminal command input" placeholder="try: ls, cat README.md, neofetch, help" />
+          <span class="prompt">usr40k@sys:~$</span>
+          <input id="shellInput" type="text" value="" aria-label="Terminal command input" placeholder="try: ls, help" />
         </label>
       </aside>
 
@@ -76,7 +68,7 @@
             <p class="eyebrow">// system profile // creative utility</p>
             <h1>usr40k@sys:~> whoami</h1>
             <p class="lead">
-              Salutations, I’m <strong>usr40k</strong> — a tinkerer, script-wrangler, and web experimenter.
+              Haiiiii :3, I’m <strong>usr40k</strong> — a tinkerer, script-wrangler, and web experimenter. And I'm also really into femboy aesthetics. (slowly becoming one too :3)
               I build tiny tools, strange interfaces, and playful software that feels like a terminal had a dream.
             </p>
             <div class="cta-row">
@@ -129,46 +121,8 @@
             <h2>usr40k@sys:~> cat Projects/*/README.md</h2>
           </div>
 
-          <div class="project-grid">
-            <article class="project-card accent-blue">
-              <div class="project-topline">
-                <span class="chip">web</span>
-                <span class="chip subtle">2026</span>
-              </div>
-              <h3>Doofus Dot Ultra</h3>
-              <p>Chaotic browser toy and visual experiment with pure absurdity, speed, and noise.</p>
-              <a href="http://gizmos.usr40k.dev/doofusdot/" target="_blank" rel="noreferrer">launch demo →</a>
-            </article>
-
-            <article class="project-card accent-purple">
-              <div class="project-topline">
-                <span class="chip">game</span>
-                <span class="chip subtle">JS</span>
-              </div>
-              <h3>megaminer NG</h3>
-              <p>Homemade mega-miner-inspired browser game with upgrades, multiplayer energy, and the kind of chaos that keeps a build alive.</p>
-              <a href="https://github.com/40476/web-gizmos/tree/main/megaminer" target="_blank" rel="noreferrer">source code →</a>
-            </article>
-
-            <article class="project-card accent-pink">
-              <div class="project-topline">
-                <span class="chip">linux</span>
-                <span class="chip subtle">hardware</span>
-              </div>
-              <h3>g510s</h3>
-              <p>Custom support and mods for the Logitech G510s keyboard, tuned for function and comfort.</p>
-              <a href="https://github.com/40476/g510s" target="_blank" rel="noreferrer">read more →</a>
-            </article>
-
-            <article class="project-card accent-green">
-              <div class="project-topline">
-                <span class="chip">cli</span>
-                <span class="chip subtle">streaming</span>
-              </div>
-              <h3>streamonline</h3>
-              <p>Terminal-native livestream checker for Linux, built for quick signal reads and system monitoring.</p>
-              <a href="https://github.com/40476/streamonline" target="_blank" rel="noreferrer">repo →</a>
-            </article>
+          <div class="project-grid" id="projectGrid">
+            <p class="project-loading">loading repos…</p>
           </div>
         </section>
 
@@ -188,17 +142,13 @@
             </div>
 
             <div class="tag-cloud" aria-label="skill tags">
-              <span>bash</span>
+              <span>zsh</span>
               <span>python</span>
               <span>javascript</span>
               <span>html/css</span>
               <span>canvas</span>
-              <span>webgl</span>
-              <span>ui design</span>
               <span>automation</span>
               <span>linux</span>
-              <span>creative coding</span>
-              <span>systems</span>
               <span>fast prototyping</span>
             </div>
           </div>
@@ -259,6 +209,147 @@
           if (githubDisplayName) githubDisplayName.textContent = '40476';
           if (profileOrb) {
             profileOrb.style.backgroundImage = 'url("https://avatars.githubusercontent.com/u/40476?v=4")';
+          }
+        });
+
+      // --- pfp effect cycler ---
+      // Rotates through a set of effects, one at a time.
+      const PFP_EFFECTS = [
+        'fx-float',
+        'fx-spin',
+        'fx-spin3d',
+        'fx-pulse',
+        'fx-wobble',
+        'fx-glitch',
+        'fx-scan',
+        'fx-rings',
+        'fx-rgb'
+      ];
+
+      const PFP_EFFECT_DURATION_MS = 6000; // how long each effect plays
+      const PFP_FADE_MS = 350; // must match the CSS opacity transition
+      let pfpEffectIndex = 0;
+      let pfpEffectTimer = null;
+      let pfpFadeTimer = null;
+
+      const clearPfpEffects = () => {
+        if (!profileOrb) return;
+        PFP_EFFECTS.forEach((fx) => profileOrb.classList.remove(fx));
+      };
+
+      // Fade the orb out, swap the effect, then fade it back in.
+      const startPfpEffect = () => {
+        if (!profileOrb) return;
+        profileOrb.classList.add('fx-fading');
+        pfpFadeTimer = setTimeout(() => {
+          clearPfpEffects();
+          // force reflow so reusing an effect restarts its animation cleanly
+          void profileOrb.offsetWidth;
+          profileOrb.classList.add(PFP_EFFECTS[pfpEffectIndex]);
+          pfpEffectIndex = (pfpEffectIndex + 1) % PFP_EFFECTS.length;
+          // fade back in
+          requestAnimationFrame(() => {
+            profileOrb.classList.remove('fx-fading');
+          });
+        }, PFP_FADE_MS);
+        pfpEffectTimer = setTimeout(startPfpEffect, PFP_EFFECT_DURATION_MS);
+      };
+
+      const pausePfpEffects = () => {
+        if (pfpEffectTimer) {
+          clearTimeout(pfpEffectTimer);
+          pfpEffectTimer = null;
+        }
+        if (pfpFadeTimer) {
+          clearTimeout(pfpFadeTimer);
+          pfpFadeTimer = null;
+        }
+      };
+
+      const resumePfpEffects = () => {
+        if (profileOrb && !pfpEffectTimer) {
+          startPfpEffect();
+        }
+      };
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          pausePfpEffects();
+        } else {
+          resumePfpEffects();
+        }
+      });
+
+      resumePfpEffects();
+
+      // --- project grid: pull 4 most recently updated non-forked repos ---
+      const projectGrid = document.getElementById('projectGrid');
+      const ACCENT_CLASSES = ['accent-blue', 'accent-purple', 'accent-pink', 'accent-green'];
+
+      const renderProjects = (repos) => {
+        if (!projectGrid) return;
+        projectGrid.innerHTML = '';
+
+        if (!repos || repos.length === 0) {
+          const empty = document.createElement('p');
+          empty.className = 'project-loading';
+          empty.textContent = 'no repos found';
+          projectGrid.appendChild(empty);
+          return;
+        }
+
+        repos.slice(0, 4).forEach((repo, index) => {
+          const card = document.createElement('article');
+          card.className = 'project-card ' + (ACCENT_CLASSES[index % ACCENT_CLASSES.length]);
+
+          const topline = document.createElement('div');
+          topline.className = 'project-topline';
+
+          const langChip = document.createElement('span');
+          langChip.className = 'chip';
+          langChip.textContent = repo.language || 'code';
+
+          const updatedChip = document.createElement('span');
+          updatedChip.className = 'chip subtle';
+          updatedChip.textContent = repo.updated_at
+            ? new Date(repo.updated_at).getFullYear()
+            : '';
+
+          topline.appendChild(langChip);
+          topline.appendChild(updatedChip);
+
+          const title = document.createElement('h3');
+          title.textContent = repo.name;
+
+          const desc = document.createElement('p');
+          desc.textContent = repo.description || 'no description provided';
+
+          const link = document.createElement('a');
+          link.href = repo.html_url;
+          link.target = '_blank';
+          link.rel = 'noreferrer';
+          link.textContent = 'repo →';
+
+          card.appendChild(topline);
+          card.appendChild(title);
+          card.appendChild(desc);
+          card.appendChild(link);
+          projectGrid.appendChild(card);
+        });
+      };
+
+      fetch('https://api.github.com/users/40476/repos?sort=updated&per_page=100')
+        .then((response) => response.ok ? response.json() : null)
+        .then((repos) => {
+          if (!repos) return;
+          const nonForked = repos
+            .filter((repo) => !repo.fork)
+            .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+          renderProjects(nonForked);
+        })
+        .catch(() => {
+          if (projectGrid) {
+            projectGrid.innerHTML = '<p class="project-loading">failed to load repos</p>';
           }
         });
 
@@ -323,7 +414,6 @@
         window.wasmShell.init()
           .then(() => {
             const statusLine = document.createElement('div');
-            statusLine.textContent = 'wasm runtime: ready — try: ls, cat README.md, neofetch, banner, help';
             terminalOutput.appendChild(statusLine);
             terminalOutput.scrollTop = terminalOutput.scrollHeight;
           })

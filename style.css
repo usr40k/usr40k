@@ -344,6 +344,7 @@ a {
   aspect-ratio: 1;
   border-radius: 30px;
   border: 1px solid rgba(105, 243, 255, 0.3);
+  perspective: 900px;
   background:
     radial-gradient(circle at 50% 40%, rgba(56, 146, 255, 0.26), transparent 25%),
     linear-gradient(180deg, rgba(11, 24, 36, 0.85), rgba(6, 11, 17, 0.92));
@@ -373,11 +374,153 @@ a {
   transform: translate(-50%, -50%);
   background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.95), rgba(105, 243, 255, 0.7) 14%, rgba(105, 243, 255, 0.22) 38%, rgba(0, 0, 0, 0) 62%);
   box-shadow: 0 0 44px rgba(105, 243, 255, 0.7);
-  animation: floatOrb 8s ease-in-out infinite, spinOrb 16s linear infinite;
   border: 1px solid rgba(105, 243, 255, 0.3);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  transition: opacity 0.35s ease;
+}
+
+/* fade wrapper used by the JS cycler to crossfade between effects */
+.orb-main.fx-fading {
+  opacity: 0;
+}
+
+/* ---- pfp effect cycling ---- */
+/* Effects are toggled by JS on #profileOrb. Every keyframe keeps the
+   translate(-50%, -50%) centering transform so the orb never jumps. */
+
+.orb-main.fx-float { animation: fxFloat 3.8s ease-in-out infinite; }
+.orb-main.fx-spin { animation: fxSpin 3.6s linear infinite; }
+.orb-main.fx-rings { animation: fxBreath 3s ease-in-out infinite; }
+.orb-main.fx-pulse { animation: fxPulse 2.4s ease-in-out infinite; }
+.orb-main.fx-wobble { animation: fxWobble 1.8s ease-in-out infinite; }
+.orb-main.fx-glitch { animation: fxGlitch 1.6s steps(1) infinite; }
+.orb-main.fx-scan { animation: fxBreath 3s ease-in-out infinite; }
+.orb-main.fx-rgb { animation: fxRgb 2.8s ease-in-out infinite; }
+.orb-main.fx-spin3d { animation: fxSpin3d 2.6s ease-in-out infinite; }
+
+@keyframes fxFloat {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+  50% { transform: translate(-50%, -50%) translateY(-18px); }
+}
+
+@keyframes fxSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes fxSpin3d {
+  0% { transform: translate(-50%, -50%) rotateY(0deg); box-shadow: 0 0 30px rgba(105, 243, 255, 0.5); }
+  50% { transform: translate(-50%, -50%) rotateY(180deg); box-shadow: 0 0 60px rgba(165, 139, 255, 0.7); }
+  100% { transform: translate(-50%, -50%) rotateY(360deg); box-shadow: 0 0 30px rgba(105, 243, 255, 0.5); }
+}
+
+@keyframes fxPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 24px rgba(0, 236, 255, 0.4); }
+  50% { transform: translate(-50%, -50%) scale(1.14); box-shadow: 0 0 60px rgba(0, 236, 255, 0.75); }
+}
+
+@keyframes fxWobble {
+  0%, 100% { transform: translate(-50%, -50%) rotate(-8deg); }
+  25% { transform: translate(-50%, -50%) rotate(8deg); }
+  60% { transform: translate(-50%, -50%) rotate(-5deg); }
+  80% { transform: translate(-50%, -50%) rotate(4deg); }
+}
+
+@keyframes fxBreath {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 28px rgba(105, 243, 255, 0.45); }
+  50% { transform: translate(-50%, -50%) scale(1.06); box-shadow: 0 0 52px rgba(255, 114, 210, 0.55); }
+}
+
+@keyframes fxGlitch {
+  0%, 100% { transform: translate(-50%, -50%); filter: none; }
+  12% { transform: translate(-50%, -50%) translate(-6px, 3px); filter: hue-rotate(90deg); }
+  24% { transform: translate(-50%, -50%) translate(5px, -3px) skewX(4deg); filter: hue-rotate(-60deg); }
+  36% { transform: translate(-50%, -50%) translate(-4px, -3px); filter: saturate(2); }
+  48% { transform: translate(-50%, -50%) translate(3px, 4px) skewY(-3deg); filter: hue-rotate(120deg); }
+  60% { transform: translate(-50%, -50%); filter: none; }
+  72% { transform: translate(-50%, -50%) translate(-7px, 2px); filter: sepia(1) hue-rotate(-40deg); }
+  84% { transform: translate(-50%, -50%) translate(4px, -2px); filter: saturate(2.4); }
+}
+
+@keyframes fxRgb {
+  0%, 100% {
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 44px rgba(255, 236, 0, 0.55);
+    filter: drop-shadow(3px 0 0 rgba(255, 0, 80, 0.55)) drop-shadow(-3px 0 0 rgba(0, 236, 255, 0.55));
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 0 58px rgba(255, 114, 210, 0.7);
+    filter: drop-shadow(-3px 0 0 rgba(0, 236, 255, 0.6)) drop-shadow(3px 0 0 rgba(255, 0, 80, 0.6));
+  }
+}
+
+/* scan-line sweep + CRT grid overlay */
+.orb-main.fx-scan::before {
+  content: '';
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: -18%;
+  height: 16%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, transparent, rgba(0, 236, 255, 0.45), rgba(255, 255, 255, 0.9), rgba(0, 236, 255, 0.45), transparent);
+  animation: fxScanLine 2.2s linear infinite;
+  pointer-events: none;
+}
+
+.orb-main.fx-scan::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-linear-gradient(180deg, rgba(0, 236, 255, 0.12) 0 2px, transparent 2px 9px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: fxScanFlicker 0.35s steps(2) infinite;
+}
+
+@keyframes fxScanLine {
+  0% { top: -18%; opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { top: 115%; opacity: 0; }
+}
+
+@keyframes fxScanFlicker {
+  0% { opacity: 0.55; }
+  100% { opacity: 1; }
+}
+
+/* electron orbit rings */
+.orb-main.fx-rings::before {
+  content: '';
+  position: absolute;
+  inset: -14%;
+  border: 1px solid transparent;
+  border-top-color: var(--cyan);
+  border-right-color: var(--cyan);
+  border-radius: 50%;
+  animation: fxRingSpin 1.8s linear infinite;
+  pointer-events: none;
+}
+
+.orb-main.fx-rings::after {
+  content: '';
+  position: absolute;
+  inset: -30%;
+  border: 1px solid transparent;
+  border-bottom-color: var(--purple);
+  border-left-color: var(--purple);
+  border-radius: 50%;
+  animation: fxRingSpin 2.6s linear infinite reverse;
+  pointer-events: none;
+}
+
+@keyframes fxRingSpin {
+  to { transform: rotate(360deg); }
 }
 
 .orb-secondary {
@@ -566,6 +709,19 @@ a {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
+}
+
+.project-loading {
+  grid-column: 1 / -1;
+  padding: 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  border: 1px dashed rgba(105, 243, 255, 0.2);
+  border-radius: 20px;
+  background: rgba(11, 18, 24, 0.5);
 }
 
 .project-card {

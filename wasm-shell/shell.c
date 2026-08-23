@@ -278,19 +278,19 @@ static void fs_init(void) {
     n->content_len = 0;
     n->perm = 0;
 
-    /* .zshrc */
+    /* .dumshrc */
     n = &fs_nodes[fs_count++];
-    str_cpy(n->name, ".zshrc");
-    str_cpy(n->path, "/home/usr40k/workspace/.zshrc");
+    str_cpy(n->name, ".dumshrc");
+    str_cpy(n->path, "/home/usr40k/workspace/.dumshrc");
     n->is_dir = 0;
     n->perm = 1;
     str_cpy(n->content,
-        "# dumsh web-shell zshrc\n"
-        "export ZSH=\"$HOME/.oh-my-zsh\"\n"
+        "# dumsh web-shell dumshrc\n"
+        "export dumsh=\"$HOME/.oh-my-dumsh\"\n"
         "export PATH=\"$HOME/.local/bin:$PATH\"\n"
         "export TERM=\"xterm-256color\"\n"
         "\n"
-        "plugins=(git gitfast zsh-interactive-cd colored-man-pages)\n"
+        "plugins=(git gitfast dumsh-interactive-cd colored-man-pages)\n"
         "\n"
         "alias ll='ls -al'\n"
         "alias la='ls -A'\n"
@@ -1337,7 +1337,7 @@ static void shell_exec_internal(const char* cmd) {
         out_write("\x1b[2J\x1b[H");
     }
     else {
-        out_write("zsh: command not found: ");
+        out_write("dumsh: command not found: ");
         out_write(cmd_name);
         out_write("\n");
     }

@@ -1,8 +1,7 @@
 {
   "name": "usr40k-web-shell",
   "runtime": "wasm",
-  "shell": "zsh",
-  "framework": "oh-my-zsh",
+  "shell": "dumsh",
   "target": "browser",
   "version": "1.0.0",
   "wasm": {
@@ -12,9 +11,7 @@
     "compiler": "clang --target=wasm32"
   },
   "files": [
-    ".zshrc",
-    "oh-my-zsh/README.md",
-    "README.md",
+    ".dumshrc",
     "manifest.json",
     "shell.c",
     "shell.wasm",

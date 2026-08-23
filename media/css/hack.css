@@ -6,28 +6,28 @@
  * -------------------------- */
 @font-face {
   font-family: 'Hack';
-  src: url('../fonts/HackNerdFont-Regular.ttf') format('truetype');;
+  src: url('../fonts/Hack-Regular.ttf') format('truetype');;
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Hack';
-  src: url('../fonts/HackNerdFont-Bold.ttf') format('truetype');;
+  src: url('../fonts/Hack-Bold.ttf') format('truetype');;
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Hack';
-  src: url('../fonts/HackNerdFont-Italic.ttf') format('truetype');;
+  src: url('../fonts/Hack-Italic.ttf') format('truetype');;
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Hack';
-  src: url('../fonts/HackNerdFont-BoldItalic.ttf') format('truetype');;
+  src: url('../fonts/Hack-BoldItalic.ttf') format('truetype');;
   font-weight: 700;
   font-style: italic;
 }
