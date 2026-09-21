@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="media/css/aos.css" />
   <link rel="stylesheet" href="style.css" />
 
-  <script>!function(e){let t=0,r=()=>{let s=document.createElement("script");s.src=e[t++],s.onerror=()=>e[t]&&r(),document.head.append(s)};r()}(location.hostname.includes("usr40k.dev")?["https://header.usr40k.dev/injector.js","https://40476.github.io/header/injector.js"]:["https://40476.github.io/header/injector.js","https://header.usr40k.dev/injector.js"]);</script>
+  <script>!function(e){let t=0,r=()=>{let s=document.createElement("script");s.src=e[t++],s.onerror=()=>e[t]&&r(),document.head.append(s)};r()}(location.hostname.includes("usr40k.dev")?["https://header.usr40k.dev/injector.js","https://usr40k.github.io/header/injector.js"]:["https://usr40k.github.io/header/injector.js","https://header.usr40k.dev/injector.js"]);</script>
 
   <noscript>
     <style>
@@ -162,7 +162,7 @@
           <ul class="link-list">
             <li><span>PIXIV</span><a href="https://www.pixiv.net/en/users/109219544" target="_blank" rel="noreferrer" id="pixivLink">usr40k</a></li>
             <li><span>Matrix</span><a href="https://matrix.to/#/@usr40k:usr40k.dev" target="_blank" rel="noreferrer" id="matrixLink">@usr40k:usr40k.dev</a></li>
-            <li><span>GitHub</span><a href="https://github.com/40476" target="_blank" rel="noreferrer">40476</a></li>
+            <li><span>GitHub</span><a href="https://github.com/usr40k" target="_blank" rel="noreferrer">usr40k</a></li>
           </ul>
         </section>
       </main>
@@ -216,11 +216,11 @@
         }
       };
 
-      fetch('https://api.github.com/users/40476')
+      fetch('https://api.github.com/users/usr40k')
         .then((response) => response.ok ? response.json() : null)
         .then((user) => {
           if (!user) return;
-          applyDisplayName(user.name || user.login || '40476');
+          applyDisplayName(user.name || user.login || 'usr40k');
           if (profileOrb && user.avatar_url) {
             profileOrb.style.backgroundImage = `url(${user.avatar_url})`;
             profileOrb.style.backgroundSize = 'cover';
@@ -229,9 +229,9 @@
           }
         })
         .catch(() => {
-          applyDisplayName('40476');
+          applyDisplayName('usr40k');
           if (profileOrb) {
-            profileOrb.style.backgroundImage = 'url("https://avatars.githubusercontent.com/u/40476?v=4")';
+            profileOrb.style.backgroundImage = 'url("https://avatars.githubusercontent.com/u/usr40k?v=4")';
           }
         });
 
@@ -361,7 +361,7 @@
         });
       };
 
-      fetch('https://api.github.com/users/40476/repos?sort=updated&per_page=100')
+      fetch('https://api.github.com/users/usr40k/repos?sort=updated&per_page=100')
         .then((response) => response.ok ? response.json() : null)
         .then((repos) => {
           if (!repos) return;

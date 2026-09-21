@@ -1,5 +1,5 @@
 #!/bin/zsh
 
 wget "https://static.cloudflareinsights.com/beacon.min.js" -O media/js/cloudflare.js
-git remote add mirror https://github.com/40476/40476.github.io.git
+git remote add mirror https://github.com/usr40k/usr40k.github.io.git
 git push --mirror mirror

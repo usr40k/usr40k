@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "40476",
+  "name": "usr40k",
   "compatibility_date": "2025-09-27",
   "observability": {
     "enabled": true

@@ -320,7 +320,7 @@ static void fs_init(void) {
         "- streamonline\n"
         "\n"
         "## Links\n"
-        "- GitHub: https://github.com/40476\n"
+        "- GitHub: https://github.com/usr40k\n"
         "- Matrix: @usr40k:usr40k.dev\n");
     n->content_len = str_len(n->content);
 
