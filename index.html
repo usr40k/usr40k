@@ -8,7 +8,6 @@
   <title id="pageTitle">usr40k</title>
   <link rel="icon" type="image/webp" href="media/images/WiZE.webp" />
   <link rel="stylesheet" href="media/css/hack.css" />
-  <link rel="stylesheet" href="media/css/aos.css" />
   <link rel="stylesheet" href="style.css" />
 
   <script>!function(e){let t=0,r=()=>{let s=document.createElement("script");s.src=e[t++],s.onerror=()=>e[t]&&r(),document.head.append(s)};r()}(location.hostname.includes("usr40k.dev")?["https://header.usr40k.dev/injector.js","https://usr40k.github.io/header/injector.js"]:["https://usr40k.github.io/header/injector.js","https://header.usr40k.dev/injector.js"]);</script>
@@ -30,11 +29,7 @@
 
   <div id="main-content" style="display: none;">
     <div class="page-shell">
-      <div class="aurora aurora-one"></div>
-      <div class="aurora aurora-two"></div>
-      <div class="grid-floor"></div>
-
-      <header class="topbar">
+      <!--<header class="topbar">
         <button class="brand-shell-toggle" id="brandShellToggle" type="button" aria-expanded="false" aria-controls="terminalShellPanel">
           <div class="brand-block">
             <span class="brand-mark" id="brandMark">usr40k@sys:~</span>
@@ -47,7 +42,7 @@
           <a href="#skills">skills</a>
           <a href="#links">contact</a>
         </nav>
-      </header>
+      </header>-->
 
       <aside class="terminal-shell-panel" id="terminalShellPanel" aria-live="polite" hidden>
         <div class="terminal-shell-header">
@@ -62,140 +57,157 @@
         </label>
       </aside>
 
-      <main class="terminal">
-        <section id="about" class="panel hero-panel" data-aos="fade-up">
-          <div class="hero-copy">
-            <!-- <p class="eyebrow">// system profile // creative utility</p> -->
+      <main class="tile-grid">
+        <section id="about" class="tile tile--about" data-vfx="about">
+          <canvas class="tile-vfx"></canvas>
+          <div class="tile-head">
+            <p class="eyebrow">// system profile</p>
+            <button class="tile-expand" type="button" aria-label="expand tile">⤢</button>
+          </div>
+          <div class="tile-body hero-copy">
             <h1 id="heroTitle">usr40k@sys:~> whoami</h1>
             <p class="lead">
-              Haiiiii :3, I’m <strong id="leadName">usr40k</strong> — a tinkerer, script-wrangler, and web experimenter. And I'm also really into femboy aesthetics. (slowly becoming one too :3)
-              I build tiny tools, strange interfaces, and playful software that feels like a terminal had a dream.
+              Haiiiii :3, I’m <strong id="leadName">usr40k</strong> — a femboy goober
+              And I'm also really into femboy aesthetics. (am one too :3)
+              I build tiny tools, strange interfaces, and playful software that feels liek a fucking sneezed or smth idk no cap frfr.
             </p>
             <div class="cta-row">
               <a class="button primary" href="#projects">View Projects</a>
               <a class="button secondary" href="#links">Get in Touch</a>
             </div>
             <div class="mini-status">
-              <!-- <span><i class="dot live"></i> online</span> -->
-              <span id="streamState">livestreams coming soon!</span>
-              <span id="liveClock">time loading…</span>
+              <span id="streamState">livestreams coming someday!</span>
+              <span id="liveClock">time loading (mad tweakin)…</span>
             </div>
           </div>
+        </section>
 
-          <div class="hero-visual" aria-hidden="true">
-            <div class="visual-panel">
-              <div class="orb orb-main" id="profileOrb"></div>
-              <div class="signal-ring ring-one"></div>
-              <div class="signal-ring ring-two"></div>
-              <div class="matrix-box">
-                <span>github</span>
-                <strong id="githubDisplayName">loading…</strong>
+        <section class="tile tile--stats" data-vfx="stats">
+          <canvas class="tile-vfx"></canvas>
+          <div class="tile-head">
+            <p class="eyebrow">// status</p>
+            <button class="tile-expand" type="button" aria-label="expand tile">⤢</button>
+          </div>
+          <div class="tile-body stat-panel">
+            <div class="stat-card">
+              <div class="stat-badge stat-one">BRUH</div>
+              <span>Bruh</span>
+            </div>
+            <div class="stat-card">
+              <div class="stat-badge stat-two">I WISH</div>
+              <span>VTuber</span>
+            </div>
+            <div class="stat-card">
+              <div class="stat-badge stat-three">100%</div>
+              <span>Zoomer</span>
+            </div>
+            <div class="stat-card">
+              <div class="stat-badge stat-four">100%</div>
+              <span>Maniac</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects" class="tile tile--projects" data-vfx="projects">
+          <canvas class="tile-vfx"></canvas>
+          <div class="tile-head">
+            <p class="eyebrow">// active projects</p>
+            <button class="tile-expand" type="button" aria-label="expand tile">⤢</button>
+          </div>
+          <div class="tile-body">
+            <h2 id="projectsTitle" style="margin-bottom:12px;color:var(--cyan);font-size:1.1rem;">usr40k@sys:~> cat Projects/*/README.md</h2>
+            <div class="project-grid" id="projectGrid">
+              <p class="project-loading">loading repos…</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="skills" class="tile tile--skills" data-vfx="skills">
+          <canvas class="tile-vfx"></canvas>
+          <div class="tile-head">
+            <p class="eyebrow">// technical focus</p>
+            <button class="tile-expand" type="button" aria-label="expand tile">⤢</button>
+          </div>
+          <div class="tile-body">
+            <h2 id="skillsTitle" style="margin-bottom:12px;color:var(--cyan);font-size:1.1rem;">usr40k@sys:~> cat Documents/things_I_do.txt</h2>
+            <div class="skill-layout">
+              <div class="focus-list">
+                <div class="focus-row"><span>01</span><p>zsh scripting</p></div>
+                <div class="focus-row"><span>02</span><p>terminal UIs with Python + curses</p></div>
+                <div class="focus-row"><span>03</span><p>web games and browser experiments</p></div>
+                <div class="focus-row"><span>04</span><p>GitHub Actions automation</p></div>
+                <div class="focus-row"><span>05</span><p>Matrix bot ideas and side-channel tooling</p></div>
+              </div>
+              <div class="tag-cloud" aria-label="skill tags">
+                <span>zsh</span>
+                <span>python</span>
+                <span>javascript</span>
+                <span>html/css</span>
+                <span>canvas</span>
+                <span>automation</span>
+                <span>linux</span>
+                <span>fast prototyping</span>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="panel stat-panel" data-aos="fade-up">
-          <div class="stat-card">
-            <div class="stat-badge stat-one">BRUH</div>
-            <span>Bruh</span>
+        <section class="tile tile--music" data-vfx="music">
+          <canvas class="tile-vfx"></canvas>
+          <div class="tile-head">
+            <p class="eyebrow">// now playing</p>
+            <button class="tile-expand" type="button" aria-label="expand tile">⤢</button>
           </div>
-          <div class="stat-card">
-            <div class="stat-badge stat-two">I WISH</div>
-            <span>VTuber</span>
-          </div>
-          <div class="stat-card">
-            <div class="stat-badge stat-three">100%</div>
-            <span>Zoomer</span>
-          </div>
-          <div class="stat-card">
-            <div class="stat-badge stat-four">100%</div>
-            <span>Maniac</span>
+          <div class="tile-body" id="musicBody">
+            <p class="project-loading">connecting to last.fm…</p>
           </div>
         </section>
 
-        <section id="projects" class="panel" data-aos="fade-up">
-          <div class="section-heading">
-            <p class="eyebrow">// active projects</p>
-            <h2 id="projectsTitle">usr40k@sys:~> cat Projects/*/README.md</h2>
+        <!--<section class="tile tile--pixiv" data-vfx="pixiv">
+          <canvas class="tile-vfx"></canvas>
+          <div class="tile-head">
+            <p class="eyebrow">// latest pixiv</p>
+            <button class="tile-expand" type="button" aria-label="expand tile">⤢</button>
           </div>
-
-          <div class="project-grid" id="projectGrid">
-            <p class="project-loading">loading repos…</p>
-          </div>
-        </section>
-
-        <section id="skills" class="panel" data-aos="fade-up">
-          <div class="section-heading">
-            <p class="eyebrow">// technical focus</p>
-            <h2 id="skillsTitle">usr40k@sys:~> cat Documents/things_I_do.txt</h2>
-          </div>
-
-          <div class="skill-layout">
-            <div class="focus-list">
-              <div class="focus-row"><span>01</span><p>zsh scripting</p></div>
-              <div class="focus-row"><span>02</span><p>terminal UIs with Python + curses</p></div>
-              <div class="focus-row"><span>03</span><p>web games and browser experiments</p></div>
-              <div class="focus-row"><span>04</span><p>GitHub Actions automation</p></div>
-              <div class="focus-row"><span>05</span><p>Matrix bot ideas and side-channel tooling</p></div>
-            </div>
-
-            <div class="tag-cloud" aria-label="skill tags">
-              <span>zsh</span>
-              <span>python</span>
-              <span>javascript</span>
-              <span>html/css</span>
-              <span>canvas</span>
-              <span>automation</span>
-              <span>linux</span>
-              <span>fast prototyping</span>
+          <div class="tile-body">
+            <div class="pixiv-grid" id="pixivGrid">
+              <p class="pixiv-empty">loading uploads…</p>
             </div>
           </div>
-        </section>
+        </section>-->
 
-        <section id="links" class="panel contact-panel" data-aos="fade-up">
-          <div class="section-heading">
+        <section id="links" class="tile tile--links" data-vfx="links">
+          <canvas class="tile-vfx"></canvas>
+          <div class="tile-head">
             <p class="eyebrow">// links & contact</p>
-            <h2 id="linksTitle">usr40k@sys:~> cat links_and_contact.txt</h2>
+            <button class="tile-expand" type="button" aria-label="expand tile">⤢</button>
           </div>
-
-          <ul class="link-list">
-            <li><span>PIXIV</span><a href="https://www.pixiv.net/en/users/109219544" target="_blank" rel="noreferrer" id="pixivLink">usr40k</a></li>
-            <li><span>Matrix</span><a href="https://matrix.to/#/@usr40k:usr40k.dev" target="_blank" rel="noreferrer" id="matrixLink">@usr40k:usr40k.dev</a></li>
-            <li><span>GitHub</span><a href="https://github.com/usr40k" target="_blank" rel="noreferrer">usr40k</a></li>
-          </ul>
+          <div class="tile-body">
+            <h2 id="linksTitle" style="margin-bottom:12px;color:var(--cyan);font-size:1.1rem;">usr40k@sys:~> cat links_and_contact.txt</h2>
+            <ul class="link-list">
+              <li><span>PIXIV</span><a href="https://www.pixiv.net/en/users/109219544" target="_blank" rel="noreferrer" id="pixivLink">usr40k</a></li>
+              <li><span>Matrix</span><a href="https://matrix.to/#/@usr40k:usr40k.dev" target="_blank" rel="noreferrer" id="matrixLink">@usr40k:usr40k.dev</a></li>
+              <li><span>GitHub</span><a href="https://github.com/usr40k" target="_blank" rel="noreferrer">usr40k</a></li>
+            </ul>
+          </div>
         </section>
       </main>
     </div>
 
-    <script src="media/js/aos.js"></script>
     <script src="wasm-shell/shell-runtime.js"></script>
     <script>
-      AOS.init({
-        duration: 700,
-        easing: 'ease-out-cubic',
-        once: true
-      });
-
+      /* ---------------- clock + display name (unchanged behaviour) ---------------- */
       const liveClock = document.getElementById('liveClock');
-      const updateClock = () => {
-        liveClock.textContent = new Date();
-      };
+      const updateClock = () => { liveClock.textContent = new Date(); };
       updateClock();
       setInterval(updateClock, 1000);
 
-      const githubDisplayName = document.getElementById('githubDisplayName');
-      const profileOrb = document.getElementById('profileOrb');
-
-      // Update every hardcoded "usr40k" mention to match the GitHub display name.
       const applyDisplayName = (name) => {
         const display = name || 'usr40k';
         const setText = (id, text) => {
           const el = document.getElementById(id);
           if (el) el.textContent = text;
         };
-
-        setText('githubDisplayName', display);
         setText('brandMark', `${display}@sys:~`);
         setText('terminalPrompt', `${display}@sys:~$`);
         setText('heroTitle', `${display}@sys:~> whoami`);
@@ -211,142 +223,212 @@
           metaDescription.setAttribute('content', `${display} builds quirky tools, terminal UIs, web experiments, and creative side projects.`);
         }
         const pageTitle = document.getElementById('pageTitle');
-        if (pageTitle) {
-          pageTitle.textContent = `${display}`;
-        }
+        if (pageTitle) pageTitle.textContent = display;
       };
 
       fetch('https://api.github.com/users/usr40k')
-        .then((response) => response.ok ? response.json() : null)
-        .then((user) => {
-          if (!user) return;
-          applyDisplayName(user.name || user.login || 'usr40k');
-          if (profileOrb && user.avatar_url) {
-            profileOrb.style.backgroundImage = `url(${user.avatar_url})`;
-            profileOrb.style.backgroundSize = 'cover';
-            profileOrb.style.backgroundPosition = 'center';
-            profileOrb.style.backgroundRepeat = 'no-repeat';
-          }
-        })
-        .catch(() => {
-          applyDisplayName('usr40k');
-          if (profileOrb) {
-            profileOrb.style.backgroundImage = 'url("https://avatars.githubusercontent.com/u/usr40k?v=4")';
+        .then((r) => (r.ok ? r.json() : null))
+        .then((u) => applyDisplayName(u && u.name))
+        .catch(() => applyDisplayName('usr40k'));
+
+      /* ---------------- tile expand / resize on selection ---------------- */
+      const tiles = Array.from(document.querySelectorAll('.tile'));
+      tiles.forEach((tile) => {
+        const trigger = tile.querySelector('.tile-expand');
+        if (!trigger) return;
+        trigger.addEventListener('click', () => {
+          const alreadyExpanded = tile.classList.contains('is-expanded');
+          tiles.forEach((t) => t.classList.remove('is-expanded', 'is-shrunk'));
+          if (!alreadyExpanded) {
+            tile.classList.add('is-expanded');
+            tiles.forEach((t) => { if (t !== tile) t.classList.add('is-shrunk'); });
           }
         });
-
-      // --- pfp effect cycler ---
-      // Rotates through a set of effects, one at a time.
-      const PFP_EFFECTS = [
-        'fx-float',
-        'fx-spin',
-        'fx-spin3d',
-        'fx-pulse',
-        'fx-wobble',
-        'fx-glitch',
-        'fx-scan',
-        'fx-rings',
-        'fx-rgb'
-      ];
-
-      const PFP_EFFECT_DURATION_MS = 6000; // how long each effect plays
-      const PFP_FADE_MS = 350; // must match the CSS opacity transition
-      let pfpEffectIndex = 0;
-      let pfpEffectTimer = null;
-      let pfpFadeTimer = null;
-
-      const clearPfpEffects = () => {
-        if (!profileOrb) return;
-        PFP_EFFECTS.forEach((fx) => profileOrb.classList.remove(fx));
-      };
-
-      // Fade the orb out, swap the effect, then fade it back in.
-      const startPfpEffect = () => {
-        if (!profileOrb) return;
-        profileOrb.classList.add('fx-fading');
-        pfpFadeTimer = setTimeout(() => {
-          clearPfpEffects();
-          // force reflow so reusing an effect restarts its animation cleanly
-          void profileOrb.offsetWidth;
-          profileOrb.classList.add(PFP_EFFECTS[pfpEffectIndex]);
-          pfpEffectIndex = (pfpEffectIndex + 1) % PFP_EFFECTS.length;
-          // fade back in
-          requestAnimationFrame(() => {
-            profileOrb.classList.remove('fx-fading');
-          });
-        }, PFP_FADE_MS);
-        pfpEffectTimer = setTimeout(startPfpEffect, PFP_EFFECT_DURATION_MS);
-      };
-
-      const pausePfpEffects = () => {
-        if (pfpEffectTimer) {
-          clearTimeout(pfpEffectTimer);
-          pfpEffectTimer = null;
-        }
-        if (pfpFadeTimer) {
-          clearTimeout(pfpFadeTimer);
-          pfpFadeTimer = null;
-        }
-      };
-
-      const resumePfpEffects = () => {
-        if (profileOrb && !pfpEffectTimer) {
-          startPfpEffect();
-        }
-      };
-
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-          pausePfpEffects();
-        } else {
-          resumePfpEffects();
-        }
       });
 
-      resumePfpEffects();
+      /* ---------------- proximity edge accent (Win10 start-menu style) ---------------- */
+      tiles.forEach((tile) => {
+        tile.addEventListener('mousemove', (e) => {
+          const rect = tile.getBoundingClientRect();
+          tile.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+          tile.style.setProperty('--my', `${e.clientY - rect.top}px`);
+        });
+      });
 
-      // --- project grid: pull 4 most recently updated non-forked repos ---
+      /* ---------------- VFX engine: background chosen per-tile from latest commit hash ---------------- */
+      const ACCENT_COLORS = { cyan: '#69f3ff', purple: '#a58bff', pink: '#ff72d2', teal: '#57ffd0' };
+      const ACCENT_KEYS = Object.keys(ACCENT_COLORS);
+      const VFX_KINDS = ['drift', 'particles', 'scan', 'mesh'];
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const hashStr = (str) => {
+        let h = 5381;
+        for (let i = 0; i < str.length; i += 1) {
+          h = ((h << 5) + h) + str.charCodeAt(i);
+          h |= 0;
+        }
+        return Math.abs(h);
+      };
+
+      const runVfx = (canvas, kind, accent) => {
+        const ctx = canvas.getContext('2d');
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        let w = 0;
+        let h = 0;
+
+        const resize = () => {
+          const rect = canvas.parentElement.getBoundingClientRect();
+          w = canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+          h = canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+        };
+        resize();
+        new ResizeObserver(resize).observe(canvas.parentElement);
+
+        if (kind === 'particles') {
+          const N = 22;
+          const pts = Array.from({ length: N }, () => ({
+            x: Math.random(), y: Math.random(),
+            vx: (Math.random() - 0.5) * 0.0006, vy: (Math.random() - 0.5) * 0.0006,
+          }));
+          const draw = () => {
+            ctx.clearRect(0, 0, w, h);
+            pts.forEach((p) => {
+              p.x += p.vx; p.y += p.vy;
+              if (p.x < 0 || p.x > 1) p.vx *= -1;
+              if (p.y < 0 || p.y > 1) p.vy *= -1;
+            });
+            ctx.lineWidth = 1;
+            for (let i = 0; i < N; i += 1) {
+              for (let j = i + 1; j < N; j += 1) {
+                const dx = (pts[i].x - pts[j].x) * w;
+                const dy = (pts[i].y - pts[j].y) * h;
+                const d = Math.hypot(dx, dy);
+                if (d < w * 0.2) {
+                  ctx.globalAlpha = 0.18 * (1 - d / (w * 0.2));
+                  ctx.strokeStyle = accent;
+                  ctx.beginPath();
+                  ctx.moveTo(pts[i].x * w, pts[i].y * h);
+                  ctx.lineTo(pts[j].x * w, pts[j].y * h);
+                  ctx.stroke();
+                }
+              }
+            }
+            ctx.globalAlpha = 0.7;
+            ctx.fillStyle = accent;
+            pts.forEach((p) => {
+              ctx.beginPath();
+              ctx.arc(p.x * w, p.y * h, 1.6 * dpr, 0, Math.PI * 2);
+              ctx.fill();
+            });
+            ctx.globalAlpha = 1;
+            if (!prefersReduced) requestAnimationFrame(draw);
+          };
+          draw();
+        } else if (kind === 'drift') {
+          const blobs = Array.from({ length: 3 }, () => ({
+            x: Math.random(), y: Math.random(), r: 0.25 + Math.random() * 0.2,
+            vx: (Math.random() - 0.5) * 0.0003, vy: (Math.random() - 0.5) * 0.0003,
+          }));
+          const draw = () => {
+            ctx.clearRect(0, 0, w, h);
+            blobs.forEach((b) => {
+              b.x += b.vx; b.y += b.vy;
+              if (b.x < -0.2 || b.x > 1.2) b.vx *= -1;
+              if (b.y < -0.2 || b.y > 1.2) b.vy *= -1;
+              const grad = ctx.createRadialGradient(b.x * w, b.y * h, 0, b.x * w, b.y * h, b.r * w);
+              grad.addColorStop(0, `${accent}22`);
+              grad.addColorStop(1, `${accent}00`);
+              ctx.fillStyle = grad;
+              ctx.fillRect(0, 0, w, h);
+            });
+            if (!prefersReduced) requestAnimationFrame(draw);
+          };
+          draw();
+        } else if (kind === 'scan') {
+          let t = 0;
+          const draw = () => {
+            ctx.clearRect(0, 0, w, h);
+            const gap = 4 * dpr;
+            ctx.fillStyle = `${accent}12`;
+            for (let y = t % gap; y < h; y += gap) ctx.fillRect(0, y, w, 1);
+            if (Math.random() < 0.02) {
+              ctx.fillStyle = `${accent}28`;
+              ctx.fillRect(0, Math.random() * h, w, 2 * dpr);
+            }
+            t += 0.4 * dpr;
+            if (!prefersReduced) requestAnimationFrame(draw);
+          };
+          draw();
+        } else {
+          let t = 0;
+          const draw = () => {
+            ctx.clearRect(0, 0, w, h);
+            ctx.strokeStyle = `${accent}18`;
+            ctx.lineWidth = 1;
+            const gap = 26 * dpr;
+            for (let x = -gap + (t % gap); x < w + gap; x += gap) {
+              ctx.beginPath();
+              ctx.moveTo(x, 0);
+              ctx.lineTo(x + h * 0.3, h);
+              ctx.stroke();
+            }
+            t += 0.25 * dpr;
+            if (!prefersReduced) requestAnimationFrame(draw);
+          };
+          draw();
+        }
+      };
+
+      const initVfx = (seed) => {
+        document.querySelectorAll('.tile[data-vfx]').forEach((tile) => {
+          const tileId = tile.dataset.vfx;
+          const h1 = hashStr(seed + tileId);
+          const kind = VFX_KINDS[h1 % VFX_KINDS.length];
+          const accentKey = ACCENT_KEYS[Math.floor(h1 / 7) % ACCENT_KEYS.length];
+          const accent = ACCENT_COLORS[accentKey];
+          tile.style.setProperty('--tile-accent', accent);
+          const canvas = tile.querySelector('canvas.tile-vfx');
+          if (canvas) runVfx(canvas, kind, accent);
+        });
+      };
+
+      fetch('https://api.github.com/repos/usr40k/usr40k/commits?per_page=1')
+        .then((r) => (r.ok ? r.json() : null))
+        .then((commits) => {
+          const sha = commits && commits[0] && commits[0].sha;
+          initVfx(sha || `fallback-${new Date().toDateString()}`);
+        })
+        .catch(() => initVfx(`fallback-${new Date().toDateString()}`));
+
+      /* ---------------- project grid: 4 most recently updated non-forked repos ---------------- */
       const projectGrid = document.getElementById('projectGrid');
-      const ACCENT_CLASSES = ['accent-blue', 'accent-purple', 'accent-pink', 'accent-green'];
 
       const renderProjects = (repos) => {
         if (!projectGrid) return;
         projectGrid.innerHTML = '';
-
         if (!repos || repos.length === 0) {
-          const empty = document.createElement('p');
-          empty.className = 'project-loading';
-          empty.textContent = 'no repos found';
-          projectGrid.appendChild(empty);
+          projectGrid.innerHTML = '<p class="project-loading">no repos found</p>';
           return;
         }
-
-        repos.slice(0, 4).forEach((repo, index) => {
+        repos.slice(0, 4).forEach((repo) => {
           const card = document.createElement('article');
-          card.className = 'project-card ' + (ACCENT_CLASSES[index % ACCENT_CLASSES.length]);
+          card.className = 'project-card';
 
           const topline = document.createElement('div');
           topline.className = 'project-topline';
-
           const langChip = document.createElement('span');
           langChip.className = 'chip';
           langChip.textContent = repo.language || 'code';
-
           const updatedChip = document.createElement('span');
           updatedChip.className = 'chip subtle';
-          updatedChip.textContent = repo.updated_at
-            ? new Date(repo.updated_at).getFullYear()
-            : '';
-
+          updatedChip.textContent = repo.updated_at ? new Date(repo.updated_at).getFullYear() : '';
           topline.appendChild(langChip);
           topline.appendChild(updatedChip);
 
           const title = document.createElement('h3');
           title.textContent = repo.name;
-
           const desc = document.createElement('p');
           desc.textContent = repo.description || 'no description provided';
-
           const link = document.createElement('a');
           link.href = repo.html_url;
           link.target = '_blank';
@@ -362,20 +444,57 @@
       };
 
       fetch('https://api.github.com/users/usr40k/repos?sort=updated&per_page=100')
-        .then((response) => response.ok ? response.json() : null)
+        .then((response) => (response.ok ? response.json() : null))
         .then((repos) => {
           if (!repos) return;
-          const nonForked = repos
-            .filter((repo) => !repo.fork)
+          const nonForked = repos.filter((repo) => !repo.fork)
             .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
           renderProjects(nonForked);
         })
         .catch(() => {
-          if (projectGrid) {
-            projectGrid.innerHTML = '<p class="project-loading">failed to load repos</p>';
-          }
+          if (projectGrid) projectGrid.innerHTML = '<p class="project-loading">failed to load repos</p>';
         });
 
+      /* ---------------- last.fm now-playing tile ---------------- */
+      const musicBody = document.getElementById('musicBody');
+      const LASTFM_ENDPOINT = 'https://lastfm-last-played.biancarosa.com.br/usr40k/latest-song';
+
+      const renderMusic = (data) => {
+        if (!musicBody) return;
+        const track = data && data.track;
+        if (!track) {
+          musicBody.innerHTML = '<p class="project-loading">no scrobble data yet</p>';
+          return;
+        }
+        const images = track.image || [];
+        const art = [((images.find((i) => i.size === 'large') || images[images.length - 1] || {})['#text'] || '')].map(s => s.includes('2a96cbd8b46e442fc41c2b86b821562f') ? '' : s)[0];
+        const nowPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
+
+        musicBody.innerHTML = `
+          <div class="music-now">
+            <img class="music-art" src="${art || 'media/images/games.png'}" alt="" loading="lazy" />
+            <div class="music-meta">
+              <div class="track">${track.name || 'unknown track'}</div>
+              <div class="artist">${(track.artist && track.artist['#text']) || 'unknown artist'}</div>
+              <div class="music-flag ${nowPlaying ? 'live' : 'paused'}">
+                <span class="dot"></span>${nowPlaying ? 'scrobbling now' : 'last played'}
+              </div>
+            </div>
+          </div>`;
+      };
+
+      const pollLastFm = () => {
+        fetch(LASTFM_ENDPOINT)
+          .then((r) => (r.ok ? r.json() : null))
+          .then((data) => renderMusic(data))
+          .catch(() => {
+            if (musicBody) musicBody.innerHTML = '<p class="project-loading">last.fm unreachable</p>';
+          });
+      };
+      pollLastFm();
+      setInterval(pollLastFm, 15000);
+
+      /* ---------------- terminal shell drawer ---------------- */
       const brandShellToggle = document.getElementById('brandShellToggle');
       const terminalShellPanel = document.getElementById('terminalShellPanel');
       const shellInput = document.getElementById('shellInput');
@@ -419,20 +538,15 @@
 
         try {
           const output = window.wasmShell.exec(value);
-          if (output) {
-            appendShellLine(output);
-          }
+          if (output) appendShellLine(output);
         } catch (error) {
           appendShellLine('shell error: ' + error.message);
         }
         shellInput.value = '';
       };
 
-      if (shellInput) {
-        shellInput.addEventListener('keydown', handleShellInput);
-      }
+      if (shellInput) shellInput.addEventListener('keydown', handleShellInput);
 
-      // Initialize the WASM shell
       if (window.wasmShell) {
         window.wasmShell.init()
           .then(() => {
@@ -455,13 +569,8 @@
       const splash = document.getElementById('splash');
       const mainContent = document.getElementById('main-content');
 
-      if (splash) {
-        splash.style.animation = 'fadeOut 1.6s ease 1.4s forwards';
-      }
-
-      if (mainContent) {
-        mainContent.style.display = 'block';
-      }
+      if (splash) splash.style.animation = 'fadeOut 1.6s ease 1.4s forwards';
+      if (mainContent) mainContent.style.display = 'block';
 
       try {
         fetch('https://ipv4.games/claim?name=usr40k');
@@ -473,4 +582,3 @@
 </body>
 
 </html>
-
