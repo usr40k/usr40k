@@ -34,11 +34,6 @@ body {
   min-height: 100vh;
 }
 
-img {
-  max-width: 100%;
-  display: block;
-}
-
 button,
 a {
   font: inherit;
@@ -287,6 +282,7 @@ a {
 }
 
 .tile-expand {
+  display: none;
   appearance: none;
   border: 1px solid var(--border);
   background: transparent;
@@ -301,6 +297,7 @@ a {
 }
 
 .tile-expand:hover {
+  display: none;
   color: var(--cyan);
   border-color: var(--cyan);
 }
@@ -392,50 +389,6 @@ a {
   background: #73ff9f;
   animation: pulse 1.7s infinite;
 }
-
-/* ---------------- stats tile ---------------- */
-
-.stat-panel {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.stat-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 8px;
-  border: 1px solid var(--border);
-  transition: border-color 0.2s ease;
-}
-
-.stat-card:hover {
-  border-color: var(--tile-accent);
-}
-
-.stat-badge {
-  width: 56px;
-  height: 56px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  font-weight: 900;
-  font-size: 0.7rem;
-  letter-spacing: 0.04em;
-  border: 2px solid var(--border-strong);
-  transition: transform 0.6s ease-in-out;
-}
-
-.stat-card:hover .stat-badge { transform: rotate(8deg) scale(1.05); }
-
-.stat-one { background: rgba(0, 236, 255, 0.08); }
-.stat-two { background: rgba(165, 139, 255, 0.1); }
-.stat-three { background: rgba(87, 255, 208, 0.1); }
-.stat-four { background: rgba(255, 114, 210, 0.1); }
-
-.stat-card span { font-size: 0.72rem; color: var(--muted); }
 
 /* ---------------- projects tile ---------------- */
 
@@ -662,4 +615,42 @@ a {
   .tile, .tile.is-expanded, .tile.is-shrunk { flex-basis: 100% !important; flex-grow: 1 !important; }
   .project-grid, .stat-panel, .pixiv-grid { grid-template-columns: 1fr; }
   .link-list li { flex-direction: column; align-items: flex-start; }
+}
+
+/* --- Edge-to-Edge Full-Bleed Slideshow --- */
+.css-slideshow {
+  position: relative;
+  /* Pulls the slideshow outward to completely ignore the parent tile-body padding */
+  width: calc(100% + 36px);
+  height: calc(100% + 36px);
+  margin: -18px; /* Counteracts the 18px padding of .tile-body */
+
+  overflow: hidden;
+  background: var(--panel-alt);
+}
+
+.css-slideshow a {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease-in-out;
+}
+
+.css-slideshow a.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.css-slideshow a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Or 'contain' depending on whether you want cropping or letterboxing */
+  display: block;
 }

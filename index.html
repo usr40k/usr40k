@@ -69,11 +69,11 @@
             <p class="lead">
               Haiiiii :3, I’m <strong id="leadName">usr40k</strong> — a femboy goober
               And I'm also really into femboy aesthetics. (am one too :3)
-              I build tiny tools, strange interfaces, and playful software that feels liek a fucking sneezed or smth idk no cap frfr.
+              I liek to make small tools and wierd playful software that feels liek a fucking sneezed or smth idk no cap frfr.
             </p>
             <div class="cta-row">
-              <a class="button primary" href="#projects">View Projects</a>
-              <a class="button secondary" href="#links">Get in Touch</a>
+              <a class="button primary" href="#projects">My Projects</a>
+              <a class="button secondary" href="#links">Contact my whimsical ass</a>
             </div>
             <div class="mini-status">
               <span id="streamState">livestreams coming someday!</span>
@@ -89,21 +89,25 @@
             <button class="tile-expand" type="button" aria-label="expand tile">⤢</button>
           </div>
           <div class="tile-body stat-panel">
-            <div class="stat-card">
-              <div class="stat-badge stat-one">BRUH</div>
-              <span>Bruh</span>
-            </div>
-            <div class="stat-card">
-              <div class="stat-badge stat-two">I WISH</div>
-              <span>VTuber</span>
-            </div>
-            <div class="stat-card">
-              <div class="stat-badge stat-three">100%</div>
-              <span>Zoomer</span>
-            </div>
-            <div class="stat-card">
-              <div class="stat-badge stat-four">100%</div>
-              <span>Maniac</span>
+            <div class="css-slideshow">
+              <a href="media/images/slideshow/astolfodefaultdance.gif"><img src="media/images/slideshow/astolfodefaultdance.gif" alt="slideshow item"></a>
+              <a href="media/images/slideshow/astolfo-guh-4104086607.gif"><img src="media/images/slideshow/astolfo-guh-4104086607.gif" alt="slideshow item"></a>
+              <a href="media/images/slideshow/Astolfo_licking.gif"><img src="media/images/slideshow/Astolfo_licking.gif" alt="slideshow item"></a>
+              <a href="media/images/slideshow/astolfo-meme-1885464221.gif"><img src="media/images/slideshow/astolfo-meme-1885464221.gif" alt="slideshow item"></a>
+              <a href="media/images/slideshow/astolfoshake.gif"><img src="media/images/slideshow/astolfoshake.gif" alt="slideshow item"></a>
+              <a href="media/images/slideshow/astolfo-speech-bubble-3951761929.gif"><img src="media/images/slideshow/astolfo-speech-bubble-3951761929.gif" alt="slideshow item"></a>
+              <a href="media/images/slideshow/astolfo-sybau-2016865382.gif"><img src="media/images/slideshow/astolfo-sybau-2016865382.gif" alt="slideshow item"></a>
+              <a href="media/images/slideshow/astolfo-touch-1795371269.gif"><img src="media/images/slideshow/astolfo-touch-1795371269.gif" alt="slideshow item"></a>
+              <a href="media/images/slideshow/discord-1315964827.gif"><img src="media/images/slideshow/discord-1315964827.gif" alt="slideshow item"></a>
+              <a href="media/images/slideshow/output.gif"><img src="media/images/slideshow/output.gif" alt="slideshow item"></a>
+              <a href="media/images/slideshow/021102bc3bdfd19f1a3c01b4639c50de-1927313328.jpg"><img src="media/images/slideshow/021102bc3bdfd19f1a3c01b4639c50de-1927313328.jpg" alt="slideshow item"></a>
+              <a href="media/images/slideshow/6inyym-3656358134.jpg"><img src="media/images/slideshow/6inyym-3656358134.jpg" alt="slideshow item"></a>
+              <a href="media/images/slideshow/82pgim-3793973361.jpg"><img src="media/images/slideshow/82pgim-3793973361.jpg" alt="slideshow item"></a>
+              <a href="media/images/slideshow/999b37010c7c83e1d868d5cd7988333b-1628598154.jpg"><img src="media/images/slideshow/999b37010c7c83e1d868d5cd7988333b-1628598154.jpg" alt="slideshow item"></a>
+              <a href="media/images/slideshow/media-2160549484.jpg"><img src="media/images/slideshow/media-2160549484.jpg" alt="slideshow item"></a>
+              <a href="media/images/slideshow/OIP-4045980867.jpg"><img src="media/images/slideshow/OIP-4045980867.jpg" alt="slideshow item"></a>
+              <a href="media/images/slideshow/OIP-4187329794.jpg"><img src="media/images/slideshow/OIP-4187329794.jpg" alt="slideshow item"></a>
+
             </div>
           </div>
         </section>
@@ -133,10 +137,10 @@
             <div class="skill-layout">
               <div class="focus-list">
                 <div class="focus-row"><span>01</span><p>zsh scripting</p></div>
-                <div class="focus-row"><span>02</span><p>terminal UIs with Python + curses</p></div>
-                <div class="focus-row"><span>03</span><p>web games and browser experiments</p></div>
-                <div class="focus-row"><span>04</span><p>GitHub Actions automation</p></div>
-                <div class="focus-row"><span>05</span><p>Matrix bot ideas and side-channel tooling</p></div>
+                <div class="focus-row"><span>02</span><p>dumb tui programs</p></div>
+                <div class="focus-row"><span>03</span><p>pureJS games</p></div>
+                <div class="focus-row"><span>04</span><p>stuff</p></div>
+                <div class="focus-row"><span>05</span><p>ur mum :3</p></div>
               </div>
               <div class="tag-cloud" aria-label="skill tags">
                 <span>zsh</span>
@@ -196,6 +200,23 @@
 
     <script src="wasm-shell/shell-runtime.js"></script>
     <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const slideshow = document.querySelector(".css-slideshow");
+  if (!slideshow) return;
+
+  const slides = slideshow.querySelectorAll("a");
+  if (slides.length === 0) return;
+
+  let currentIndex = 0;
+  slides[currentIndex].classList.add("active"); // Show the first slide initially
+
+  // Change image every 4 seconds (4000ms)
+  setInterval(() => {
+    slides[currentIndex].classList.remove("active");
+    currentIndex = (currentIndex + 1) % slides.length;
+    slides[currentIndex].classList.add("active");
+  }, 4000);
+});
       /* ---------------- clock + display name (unchanged behaviour) ---------------- */
       const liveClock = document.getElementById('liveClock');
       const updateClock = () => { liveClock.textContent = new Date(); };
@@ -392,13 +413,13 @@
         });
       };
 
-      fetch('https://api.github.com/repos/usr40k/usr40k/commits?per_page=1')
-        .then((r) => (r.ok ? r.json() : null))
-        .then((commits) => {
-          const sha = commits && commits[0] && commits[0].sha;
-          initVfx(sha || `fallback-${new Date().toDateString()}`);
-        })
-        .catch(() => initVfx(`fallback-${new Date().toDateString()}`));
+      // fetch('https://api.github.com/repos/usr40k/usr40k/commits?per_page=1')
+      //   .then((r) => (r.ok ? r.json() : null))
+      //   .then((commits) => {
+      //     const sha = commits && commits[0] && commits[0].sha;
+      //     initVfx(sha || `fallback-${new Date().toDateString()}`);
+      //   })
+      //   .catch(() => initVfx(`fallback-${new Date().toDateString()}`));
 
       /* ---------------- project grid: 4 most recently updated non-forked repos ---------------- */
       const projectGrid = document.getElementById('projectGrid');
@@ -492,7 +513,7 @@
           });
       };
       pollLastFm();
-      setInterval(pollLastFm, 15000);
+      setInterval(pollLastFm, 45000);
 
       /* ---------------- terminal shell drawer ---------------- */
       const brandShellToggle = document.getElementById('brandShellToggle');
