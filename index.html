@@ -23,7 +23,7 @@
 <body>
   <div id="splash" aria-label="loading splash screen">
     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ201h0" aria-label="secret link">
-      <img src="media/images/WiZE.webp" alt="W i Z E splash logo" />
+      <img src="media/images/WiZE.webp" alt="bebby bingle" />
     </a>
   </div>
 
@@ -44,7 +44,7 @@
         </nav>
       </header>-->
 
-      <aside class="terminal-shell-panel" id="terminalShellPanel" aria-live="polite" hidden>
+      <!-- <aside class="terminal-shell-panel" id="terminalShellPanel" aria-live="polite" hidden>
         <div class="terminal-shell-header">
           <span>dumsh // wasm web-shell</span>
           <span>status: ready</span>
@@ -55,7 +55,7 @@
           <span class="prompt" id="terminalPrompt">usr40k@sys:~$</span>
           <input id="shellInput" type="text" value="" aria-label="Terminal command input" placeholder="try: ls, help" />
         </label>
-      </aside>
+      </aside> -->
 
       <main class="tile-grid">
         <section id="about" class="tile tile--about" data-vfx="about">
@@ -67,8 +67,8 @@
           <div class="tile-body hero-copy">
             <h1 id="heroTitle">usr40k@sys:~> whoami</h1>
             <p class="lead">
-              Haiiiii :3, I’m <strong id="leadName">usr40k</strong> — a femboy goober
-              And I'm also really into femboy aesthetics. (am one too :3)
+              haiiiii :3, I'm <strong id="leadName">usr40k</strong> — a femboy goober
+              also I'm also really into femboy aesthetics. (am one too :3)
               I liek to make small tools and wierd playful software that feels liek a fucking sneezed or smth idk no cap frfr.
             </p>
             <div class="cta-row">
@@ -200,24 +200,25 @@
 
     <script src="wasm-shell/shell-runtime.js"></script>
     <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const slideshow = document.querySelector(".css-slideshow");
-  if (!slideshow) return;
+      document.addEventListener("DOMContentLoaded", () => {
+        const slideshow = document.querySelector(".css-slideshow");
+        if (!slideshow) return;
 
-  const slides = slideshow.querySelectorAll("a");
-  if (slides.length === 0) return;
+        const slides = slideshow.querySelectorAll("a");
+        if (slides.length === 0) return;
 
-  let currentIndex = 0;
-  slides[currentIndex].classList.add("active"); // Show the first slide initially
+        let currentIndex = 0;
+        slides[currentIndex].classList.add("active"); // Show the first slide initially
 
-  // Change image every 4 seconds (4000ms)
-  setInterval(() => {
-    slides[currentIndex].classList.remove("active");
-    currentIndex = (currentIndex + 1) % slides.length;
-    slides[currentIndex].classList.add("active");
-  }, 4000);
-});
-      /* ---------------- clock + display name (unchanged behaviour) ---------------- */
+        // Change image every 4 seconds (4000ms)
+        setInterval(() => {
+          slides[currentIndex].classList.remove("active");
+          currentIndex = (currentIndex + 1) % slides.length;
+          slides[currentIndex].classList.add("active");
+        }, 4000);
+      });
+
+      /* ---------------- clock + display name ---------------- */
       const liveClock = document.getElementById('liveClock');
       const updateClock = () => { liveClock.textContent = new Date(); };
       updateClock();
@@ -237,7 +238,6 @@ document.addEventListener("DOMContentLoaded", () => {
         setText('skillsTitle', `${display}@sys:~> cat Documents/things_I_do.txt`);
         setText('linksTitle', `${display}@sys:~> cat links_and_contact.txt`);
         setText('pixivLink', display);
-        setText('matrixLink', `@${display}:usr40k.dev`);
 
         const metaDescription = document.getElementById('metaDescription');
         if (metaDescription) {
