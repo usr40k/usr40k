@@ -1,0 +1,50 @@
+{
+  "title": "usr40k",
+  "site": {
+    "user": "usr40k",
+    "github": "usr40k",
+    "twitch": "usr40kdotdev",
+    "claim": "https://ipv4.games/claim?name=usr40k"
+  },
+  "hover": {
+    "dwell": 90,
+    "grow": 0.3,
+    "retain": 0.6,
+    "max": 0.6
+  },
+  "statusbar": {
+    "session": "usr40k",
+    "hint": "hover=grow  esc=reset  alt+hjkl=move"
+  },
+  "tree": {
+    "split": "h",
+    "children": [
+      {
+        "split": "v",
+        "children": [
+          { "tile": "about", "weight": 1.8 },
+          { "tile": "streams", "weight": 1.5 }
+        ]
+      },
+      {
+        "split": "v",
+        "children": [
+          { "tile": "projects", "weight": 3 },
+          {
+            "split": "h",
+            "children": [
+              { "tile": "skills", "weight": 1.4 },
+              {
+                "split": "v",
+                "children": [
+                  { "tile": "music", "weight": 1.2 },
+                  { "tile": "links", "weight": 1.1 }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

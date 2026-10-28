@@ -1,0 +1,50 @@
+{
+  "title": "about",
+  "accent": "#00ffff",
+  "min": {
+    "w": 200,
+    "h": 120
+  },
+  "config": {
+    "twitchPollMs": 120000
+  },
+  "html": [
+    "<h1><span data-user>usr40k</span>@sys:~&gt; whoami</h1>",
+    "<p>haiiiii :3, I'm <strong class='hl' data-user>usr40k</strong> — a femboy goober",
+    "also I'm also really into femboy aesthetics. (am one too :3)",
+    "I liek to make small tools and wierd playful software that feels liek a fucking sneezed or smth idk no cap frfr.</p>",
+    "<p>",
+    "  <a class='btn' href='#projects' data-focus-tile='projects' data-ripple>My Projects</a>",
+    "  <a class='btn' href='#links' data-focus-tile='links' data-ripple>Contact my whimsical ass</a>",
+    "</p>",
+    "<p class='dim'>twitch: <span class='st'>livestreams coming someday!</span></p>"
+  ],
+  "css": [
+    "p { max-width: 72ch; }",
+    ".hl { color: var(--accent); }",
+    ".btn { margin: 0 16px 0 0; }"
+  ],
+  "js": [
+    "const st = root.querySelector('.st');",
+    "const login = ctx.site.twitch;",
+    "const idle = st.textContent;",
+    "",
+    "async function check() {",
+    "  try {",
+    "    const r = await fetch('https://decapi.me/twitch/uptime/' + encodeURIComponent(login));",
+    "    const t = (await r.text()).trim();",
+    "    if (/(second|minute|hour|day)/i.test(t) && !/offline/i.test(t)) {",
+    "      const l = ctx.esc(login);",
+    "      st.innerHTML = `<span class='ok'>● live</span> <a href='https://twitch.tv/${l}' target='_blank' rel='noopener noreferrer'>twitch.tv/${l}</a> <span class='dim'>(${ctx.esc(t)})</span>`;",
+    "    } else {",
+    "      st.textContent = idle;",
+    "    }",
+    "  } catch (e) {",
+    "    st.textContent = idle;",
+    "  }",
+    "}",
+    "",
+    "check();",
+    "ctx.interval(check, ctx.config.twitchPollMs || 120000);"
+  ]
+}

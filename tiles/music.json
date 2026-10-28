@@ -1,0 +1,61 @@
+{
+  "title": "now playing",
+  "accent": "#ff55ff",
+  "min": {
+    "w": 176,
+    "h": 120
+  },
+  "config": {
+    "endpoint": "https://lastfm-last-played.biancarosa.com.br/usr40k/latest-song",
+    "pollMs": 45000,
+    "fallbackArt": "media/images/games.png"
+  },
+  "html": [
+    "<div class='np'><p class='loading'>connecting to last.fm</p></div>"
+  ],
+  "css": [
+    ".np { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }",
+    ".art { width: clamp(128px, 42%, 320px); aspect-ratio: 1; object-fit: cover; border: 1px solid var(--line); background: var(--bg-alt); flex: none; }",
+    ".meta { min-width: 0; flex: 1 1 120px; }",
+    ".track { color: var(--accent); font-weight: 700; overflow-wrap: anywhere; }",
+    ".artist { color: var(--dim); overflow-wrap: anywhere; }",
+    ".flag { margin-top: 8px; color: var(--dim); }",
+    ".flag.live { color: var(--ok); }"
+  ],
+  "js": [
+    "const box = root.querySelector('.np');",
+    "const cfg = ctx.config;",
+    "// last.fm serves this grey star as 'no artwork'",
+    "const BLANK = '2a96cbd8b46e442fc41c2b86b821562f';",
+    "",
+    "function render(data) {",
+    "  const track = data && data.track;",
+    "  if (!track) { box.innerHTML = `<p class='dim'>no scrobble data yet</p>`; return; }",
+    "  const imgs = track.image || [];",
+    "  const pick = imgs.find((i) => i.size === 'large') || imgs[imgs.length - 1] || {};",
+    "  let art = pick['#text'] || '';",
+    "  if (art.includes(BLANK)) art = '';",
+    "  const live = track['@attr'] && track['@attr'].nowplaying === 'true';",
+    "  const artist = (track.artist && track.artist['#text']) || 'unknown artist';",
+    "  box.innerHTML = `",
+    "    <img class='art' src='${ctx.esc(art || cfg.fallbackArt)}' alt='' loading='lazy'>",
+    "    <div class='meta'>",
+    "      <div class='track'>${ctx.esc(track.name || 'unknown track')}</div>",
+    "      <div class='artist'>${ctx.esc(artist)}</div>",
+    "      <div class='flag ${live ? 'live' : ''}'>${live ? '● scrobbling now' : '○ last played'}</div>",
+    "    </div>`;",
+    "}",
+    "",
+    "async function poll() {",
+    "  try {",
+    "    const r = await fetch(cfg.endpoint);",
+    "    render(r.ok ? await r.json() : null);",
+    "  } catch (e) {",
+    "    box.innerHTML = `<p class='dim'>last.fm unreachable</p>`;",
+    "  }",
+    "}",
+    "",
+    "poll();",
+    "ctx.interval(poll, cfg.pollMs || 45000);"
+  ]
+}

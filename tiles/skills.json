@@ -1,0 +1,30 @@
+{
+  "title": "skills",
+  "accent": "#55ff55",
+  "min": {
+    "w": 176,
+    "h": 120
+  },
+  "html": [
+    "<h2><span data-user>usr40k</span>@sys:~&gt; cat Documents/things_I_do.txt</h2>",
+    "<ol class='focus'>",
+    "  <li><span>01</span>zsh scripting</li>",
+    "  <li><span>02</span>dumb tui programs</li>",
+    "  <li><span>03</span>pureJS games</li>",
+    "  <li><span>04</span>stuff</li>",
+    "  <li><span>05</span>ur mum :3</li>",
+    "</ol>",
+    "<p class='tags'>",
+    "  <span>zsh</span><span>python</span><span>javascript</span><span>html/css</span>",
+    "  <span>canvas</span><span>automation</span><span>linux</span><span>fast prototyping</span>",
+    "</p>"
+  ],
+  "css": [
+    ".focus { list-style: none; margin-bottom: 16px; }",
+    ".focus li { color: var(--fg); }",
+    ".focus li span { display: inline-block; width: 24px; color: var(--ok); }",
+    ".tags { display: flex; flex-wrap: wrap; gap: 0 8px; }",
+    ".tags span { color: var(--dim); }",
+    ".tags span::before { content: '#'; color: var(--ok); }"
+  ]
+}

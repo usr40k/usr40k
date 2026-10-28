@@ -1,0 +1,57 @@
+{
+  "title": "links",
+  "accent": "#ffff55",
+  "min": {
+    "w": 176,
+    "h": 120
+  },
+  "config": {
+    "links": [
+      {
+        "label": "PIXIV",
+        "text": "usr40k",
+        "href": "https://www.pixiv.net/en/users/109219544"
+      },
+      {
+        "label": "Matrix",
+        "text": "@usr40k:usr40k.dev",
+        "href": "https://matrix.to/#/@usr40k:usr40k.dev"
+      },
+      {
+        "label": "GitHub",
+        "text": "usr40k",
+        "href": "https://github.com/usr40k"
+      },
+      {
+        "label": "Twitch",
+        "text": "usr40kdotdev",
+        "href": "https://twitch.tv/usr40kdotdev"
+      }
+    ]
+  },
+  "html": [
+    "<h2><span data-user>usr40k</span>@sys:~&gt; cat links_and_contact.txt</h2>",
+    "<dl class='kv'></dl>"
+  ],
+  "css": [
+    ".kv { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; }",
+    ".kv dt { color: var(--dim); text-transform: uppercase; }",
+    ".kv dd { min-width: 0; overflow-wrap: anywhere; }"
+  ],
+  "js": [
+    "const dl = root.querySelector('.kv');",
+    "(ctx.config.links || []).forEach((l) => {",
+    "  const dt = document.createElement('dt');",
+    "  dt.textContent = l.label;",
+    "  const dd = document.createElement('dd');",
+    "  const a = document.createElement('a');",
+    "  a.href = l.href;",
+    "  a.target = '_blank';",
+    "  a.rel = 'noopener noreferrer';",
+    "  a.textContent = l.text;",
+    "  dd.appendChild(a);",
+    "  dl.append(dt, dd);",
+    "  ctx.ripple(a);",
+    "});"
+  ]
+}
