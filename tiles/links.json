@@ -8,19 +8,24 @@
   "config": {
     "links": [
       {
-        "label": "PIXIV",
-        "text": "usr40k",
-        "href": "https://www.pixiv.net/en/users/109219544"
-      },
-      {
         "label": "Matrix",
         "text": "@usr40k:usr40k.dev",
         "href": "https://matrix.to/#/@usr40k:usr40k.dev"
       },
       {
+        "label": "PIXIV",
+        "text": "usr40k",
+        "href": "https://www.pixiv.net/en/users/109219544"
+      },
+      {
         "label": "GitHub",
         "text": "usr40k",
         "href": "https://github.com/usr40k"
+      },
+      {
+        "label": "Pixelfed",
+        "text": "@deko.femboy@pixelfed.social",
+        "href": "https://youtu.be/dQw4w9WgXcQ"
       },
       {
         "label": "Twitch",
