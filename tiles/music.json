@@ -8,10 +8,10 @@
   "config": {
     "endpoint": "https://lastfm-last-played.biancarosa.com.br/usr40k/latest-song",
     "pollMs": 45000,
-    "fallbackArt": "media/images/games.png"
+    "fallbackArt": "media/images/cooked.gif"
   },
   "html": [
-    "<div class='np'><p class='loading'>connecting to last.fm</p></div>"
+    "<div class='np'><p class='loading'>last.fm what r u doin :3</p></div>"
   ],
   "css": [
     ".np { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }",
@@ -30,19 +30,19 @@
     "",
     "function render(data) {",
     "  const track = data && data.track;",
-    "  if (!track) { box.innerHTML = `<p class='dim'>no scrobble data yet</p>`; return; }",
+    "  if (!track) { box.innerHTML = `<p class='dim'>no scrobble data yet </p>`; return; }",
     "  const imgs = track.image || [];",
     "  const pick = imgs.find((i) => i.size === 'large') || imgs[imgs.length - 1] || {};",
     "  let art = pick['#text'] || '';",
     "  if (art.includes(BLANK)) art = '';",
     "  const live = track['@attr'] && track['@attr'].nowplaying === 'true';",
-    "  const artist = (track.artist && track.artist['#text']) || 'unknown artist';",
+    "  const artist = (track.artist && track.artist['#text']) || 'unknown artist ಠ_ಠ';",
     "  box.innerHTML = `",
     "    <img class='art' src='${ctx.esc(art || cfg.fallbackArt)}' alt='' loading='lazy'>",
     "    <div class='meta'>",
-    "      <div class='track'>${ctx.esc(track.name || 'unknown track')}</div>",
+    "      <div class='track'>${ctx.esc(track.name || 'unknown track ಠ_ಠ')}</div>",
     "      <div class='artist'>${ctx.esc(artist)}</div>",
-    "      <div class='flag ${live ? 'live' : ''}'>${live ? '● scrobbling now' : '○ last played'}</div>",
+    "      <div class='flag ${live ? 'live' : ''}'>${live ? '● right now :3' : '○ last played (ZzZ)'}</div>",
     "    </div>`;",
     "}",
     "",
@@ -51,7 +51,7 @@
     "    const r = await fetch(cfg.endpoint);",
     "    render(r.ok ? await r.json() : null);",
     "  } catch (e) {",
-    "    box.innerHTML = `<p class='dim'>last.fm unreachable</p>`;",
+    "    box.innerHTML = `<p class='dim'>last.fm is ded or ur cooked</p>`;",
     "  }",
     "}",
     "",
