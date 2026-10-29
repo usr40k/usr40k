@@ -7,7 +7,7 @@
   },
   "config": {
     "followsUrl": "data/follows.json",
-    "streamers": [ "velkyen", "pankyvt", "figsorbet", "kqllisto", "fuwafa", "linechu" ],
+    "streamers": [ "velkyen", "linechu", "figsorbet", "fuwafa", "kqllisto" ],
     "interval": 6000
   },
   "html": [
